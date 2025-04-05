@@ -140,8 +140,8 @@ body {
     padding: 20px 30px;
     flex-direction: column;
     align-items: flex-start;
-    background: transparent;
-    backdrop-filter: blur(6px);
+    background: rgba(0, 0, 0, 0.7); /* corrigido */
+    backdrop-filter: blur(6px);     /* deixa mais elegante */
   }
 
   .navbar {
@@ -150,7 +150,6 @@ body {
     width: 100%;
     margin-top: 10px;
   }
-
 
   .home {
     padding: 140px 30px 0;
