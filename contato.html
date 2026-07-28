@@ -1,45 +1,89 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="pt-br">
+
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Contato | Anderson Frota</title>
+  <meta name="description" content="Entre em contato com Anderson Frota para trabalhos de front-end, projetos web e desenvolvimento de interfaces profissionais." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
+  <link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet" />
   <link rel="stylesheet" href="./style.css" />
-  <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'/>
 </head>
 
 <body>
-  <body>
-    <heade class="header">
-      <a href="./index.html" class="logo">Developer.</a>
+  <header class="header">
+    <div class="container header-inner">
+      <a href="./index.html" class="logo"><span>A</span>ndersonFrota</a>
       <nav class="navbar">
-        <a href="./index.html" class="active">Home</a>
-        <a href="./sobremin.html">Sobre Mim</a>
+        <a href="./index.html">Início</a>
+        <a href="./sobremin.html">Sobre</a>
         <a href="./portifolio.html">Portfólio</a>
-        <a href="./contato.html">Contato</a>
+        <a href="./contato.html" class="active">Contato</a>
       </nav>
-    </heade>
-  <section class="home">
-    <div class="home-contato">
-      <h1>Entre em Contato</h1>
-      <p>Se você deseja conversar, colaborar ou tirar dúvidas, estou à disposição nos canais abaixo:</p>
-
-      <div class="contato-links" style="margin-top: 30px;">
-        <a class="btn" href="https://wa.me/351961619937" target="_blank"><i class='bx bxl-whatsapp'></i> WhatsApp</a><br><br>
-        <a class="btn" href="mailto:andersonfrota@outlook.pt" target="_blank"><i class='bx bx-envelope'></i> E-mail</a><br><br>
-        <a class="btn" href="https://www.linkedin.com/in/andersongfrota/" target="_blank"><i class='bx bxl-linkedin'></i> LinkedIn</a>
-      </div>
     </div>
-  </section>
+  </header>
 
-  <div class="video-caixa">
-    <video src="./videos/video1.mp4" autoplay muted loop playsinline preload="auto"></video>
-    <div class="mascara"></div>
-  </div>
+  <main class="container contact-page">
+    <section class="page-header">
+      <div class="section-tag">Contato</div>
+      <h1>Vamos criar algo profissional juntos?</h1>
+      <p>Estou disponível para projetos de front-end, desenvolvimento web e transformações digitais. Escolha o canal preferido e fale comigo.</p>
+    </section>
 
+    <section class="contact-main">
+      <div class="grid contact-grid">
+        <div class="contact-card">
+          <i class='bx bxl-whatsapp'></i>
+          <div>
+            <h3>WhatsApp</h3>
+            <a href="https://wa.me/351961619937" target="_blank" rel="noreferrer noopener">+351 961 619 937</a>
+            <span>Contato rápido para orçamento e dúvidas.</span>
+          </div>
+        </div>
+        <div class="contact-card">
+          <i class='bx bx-envelope'></i>
+          <div>
+            <h3>E-mail</h3>
+            <a href="mailto:andersonfrota@outlook.pt">andersonfrota@outlook.pt</a>
+            <span>Envie detalhes do projeto ou solicite uma proposta.</span>
+          </div>
+        </div>
+        <div class="contact-card">
+          <i class='bx bxl-linkedin'></i>
+          <div>
+            <h3>LinkedIn</h3>
+            <a href="https://www.linkedin.com/in/andersongfrota/" target="_blank" rel="noreferrer noopener">linkedin.com/in/andersongfrota</a>
+            <span>Vamos conectar para oportunidades profissionais.</span>
+          </div>
+        </div>
+        <div class="contact-card">
+          <i class='bx bxl-github'></i>
+          <div>
+            <h3>GitHub</h3>
+            <a href="https://github.com/AndersonFrotaGoncalves" target="_blank" rel="noreferrer noopener">github.com/AndersonFrotaGoncalves</a>
+            <span>Confira outros projetos e contribuições de código.</span>
+          </div>
+        </div>
+      </div>
 
-  <footer class="footer">
-    <p>© 2024 Anderson Frota. Todos os direitos reservados.</p>
+      <form class="contact-form" action="#" novalidate>
+        <label for="name">Nome completo</label>
+        <input id="name" name="name" type="text" placeholder="Seu nome" />
+        <label for="email">E-mail</label>
+        <input id="email" name="email" type="email" placeholder="seu@email.com" />
+        <label for="message">Mensagem</label>
+        <textarea id="message" name="message" placeholder="Conte brevemente sobre seu projeto"></textarea>
+        <button type="submit">Enviar mensagem</button>
+      </form>
+    </section>
+  </main>
+
+  <footer class="footer container">
+    <p>© 2026 Anderson Frota. Desenvolvedor Front-End. <a href="./index.html">Voltar ao início</a></p>
   </footer>
 </body>
+
 </html>

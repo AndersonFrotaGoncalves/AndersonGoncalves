@@ -1,56 +1,104 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="pt-br">
 
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Sobre Mim | Anderson Frota</title>
-  <link rel="stylesheet" href="./sobremin.css" />
-  <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet' />
+  <meta name="description" content="Conheça a trajetória de Anderson Frota como desenvolvedor front-end e como entrego resultados com compromisso e dedicação." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
+  <link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet" />
+  <link rel="stylesheet" href="./style.css" />
 </head>
 
 <body>
-
-  <body>
-    <heade class="header">
-      <a href="./index.html" class="logo">Developer.</a>
+  <header class="header">
+    <div class="container header-inner">
+      <a href="./index.html" class="logo"><span>A</span>ndersonFrota</a>
       <nav class="navbar">
-        <a href="./index.html" class="active">Home</a>
-        <a href="./sobremin.html">Sobre Mim</a>
+        <a href="./index.html">Início</a>
+        <a href="./sobremin.html" class="active">Sobre</a>
         <a href="./portifolio.html">Portfólio</a>
         <a href="./contato.html">Contato</a>
       </nav>
-    </heade>
+    </div>
+  </header>
 
-    <section class="home">
-      <div class="home-contato">
-        <h1>Sobre Mim</h1>
-        <p>
-          Meu nome é <strong>Anderson Frota</strong> e sou um desenvolvedor front-end,
-          atualmente estudando na instituição  Em <strong> Portugal</strong>. Tenho me dedicado intensamente aos
-          estudos em <strong>HTML, CSS, JavaScript e React</strong>, criando projetos reais e buscando sempre evolução
-          constante.
-        </p>
-        <p>
-          Minha trajetória começou na área de logística, onde desenvolvi habilidades de organização, resolução de
-          problemas e trabalho em equipe — competências que hoje aplico no mundo da programação.
-        </p>
-        <p>
-          Sou comprometido com minha jornada na área de tecnologia e estou sempre disposto a aprender, colaborar e
-          evoluir profissionalmente. Busco crescer junto a equipes de desenvolvimento, contribuindo com dedicação,
-          curiosidade e foco em resultados.
-        </p>
+  <main class="container about-page">
+    <section class="page-header">
+      <div class="section-tag">Sobre Mim</div>
+      <h1>Sou desenvolvedor front-end em Portugal, com foco em entrega profissional e evolução contínua</h1>
+      <p>Transformo ideias em interfaces funcionais e atrativas, conciliando design, usabilidade e performance para cada projeto.</p>
+    </section>
+
+    <section class="grid cards">
+      <div class="card">
+        <i class='bx bx-user'></i>
+        <h3>Trajetória</h3>
+        <p>Depois de iniciar na área de logística, adotei a programação como carreira. Hoje aplico organização e atenção aos detalhes em cada entrega.</p>
+      </div>
+      <div class="card">
+        <i class='bx bx-rocket'></i>
+        <h3>Abordagem</h3>
+        <p>Trabalho com foco em clareza visual e código limpo, para sites que passam uma impressão profissional desde o primeiro clique.</p>
+      </div>
+      <div class="card">
+        <i class='bx bx-bar-chart-alt-2'></i>
+        <h3>Objetivo</h3>
+        <p>Entregar soluções que melhorem a presença digital de empresas e ajudem recrutadores a ver meu potencial técnico e criativo.</p>
       </div>
     </section>
 
-    <div class="video-caixa">
-      <video src="./videos/video1.mp4" autoplay muted loop playsinline preload="auto"></video>
-      <div class="mascara"></div>
-    </div>
+    <section class="skills">
+      <div class="section-tag">Skills</div>
+      <h2>Ferramentas e tecnologias usadas</h2>
+      <div class="grid cards">
+        <div class="card">
+          <i class='bx bx-code-alt'></i>
+          <h3>Front-end essencial</h3>
+          <p>HTML, CSS, JavaScript e boas práticas de responsividade e acessibilidade.</p>
+        </div>
+        <div class="card">
+          <i class='bx bxl-react'></i>
+          <h3>React</h3>
+          <p>Desenvolvimento de componentes reutilizáveis e estruturas de interface modernas.</p>
+        </div>
+        <div class="card">
+          <i class='bx bx-palette'></i>
+          <h3>Design visual</h3>
+          <p>Tipografia, paleta de cores e layout alinhados para fortalecer a comunicação do projeto.</p>
+        </div>
+      </div>
+    </section>
 
-    <footer class="footer">
-      <p>© 2024 Anderson Frota. Todos os direitos reservados.</p>
-    </footer>
-  </body>
+    <section class="featured-work">
+      <div class="section-tag">Processo</div>
+      <h2>Como trabalho com cada projeto</h2>
+      <div class="grid cards">
+        <div class="card">
+          <i class='bx bx-search'></i>
+          <h3>Entendimento</h3>
+          <p>Começo pelo objetivo do cliente, público-alvo e função do projeto para orientar o design e a estrutura.</p>
+        </div>
+        <div class="card">
+          <i class='bx bx-layout'></i>
+          <h3>Desenvolvimento</h3>
+          <p>Criatividade e organização caminham juntas para entregar um site coeso, rápido e com código bem estruturado.</p>
+        </div>
+        <div class="card">
+          <i class='bx bx-check-shield'></i>
+          <h3>Finalização</h3>
+          <p>Reviso a interface, desempenho e detalhes de responsividade para garantir que o produto esteja pronto para o cliente.</p>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer container">
+    <p>© 2026 Anderson Frota. Desenvolvedor Front-End. <a href="./contato.html">Vamos conversar</a></p>
+  </footer>
+</body>
 
 </html>
