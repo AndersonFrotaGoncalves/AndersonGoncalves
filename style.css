@@ -203,6 +203,7 @@ main {
   inset: 0;
 }
 
+.hero-video-wrapper img,
 .hero-video-wrapper video {
   width: 100%;
   height: 100%;
