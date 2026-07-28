@@ -211,6 +211,18 @@ main {
   filter: saturate(0.9) brightness(0.76);
 }
 
+.hero-image-mobile {
+  display: none;
+  margin: 24px 0 0;
+}
+
+.hero-image-mobile img {
+  width: 100%;
+  height: auto;
+  border-radius: 30px;
+  box-shadow: var(--shadow);
+}
+
 .hero-overlay {
   position: absolute;
   inset: 0;
@@ -581,6 +593,14 @@ main {
 
   .hero-media {
     min-height: 260px;
+  }
+
+  .hero-image-mobile {
+    display: block;
+  }
+
+  .hero-media {
+    display: none;
   }
 }
 
