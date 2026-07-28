@@ -412,7 +412,9 @@ main {
 }
 
 .contact-grid {
+  display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 24px;
 }
 
 .contact-card {
@@ -420,6 +422,19 @@ main {
   grid-template-columns: auto 1fr;
   align-items: center;
   gap: 18px;
+  min-width: 0;
+  min-height: 170px;
+  padding: 28px;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 28px;
+  box-shadow: var(--shadow);
+}
+
+.contact-card div {
+  display: grid;
+  gap: 10px;
+  min-width: 0;
 }
 
 .contact-card i {
@@ -432,9 +447,12 @@ main {
 }
 
 .contact-card a {
+  display: inline-block;
   color: var(--text);
   font-weight: 600;
   text-decoration: none;
+  overflow-wrap: anywhere;
+  word-break: break-word;
 }
 
 .contact-card span {
