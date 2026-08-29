@@ -181,25 +181,24 @@
   .about p{ color:var(--text-muted); font-size:16px; max-width:560px; line-height:1.7; margin-bottom:24px; }
 
   .portfolio{ padding:80px 0; border-top:1px solid var(--border); position:relative; z-index:1; }
-  .proj-grid{ display:grid; grid-template-columns:repeat(3,1fr); gap:22px; margin-top:44px; }
-  @media (max-width:900px){ .proj-grid{ grid-template-columns:repeat(2,1fr); } }
-  @media (max-width:620px){ .proj-grid{ grid-template-columns:1fr; } }
+  .proj-grid{ display:grid; grid-template-columns:repeat(2,1fr); gap:32px; margin-top:48px; }
+  @media (max-width:760px){ .proj-grid{ grid-template-columns:1fr; gap:26px; } }
 
   .proj-card{
-    background:var(--card); border:1px solid var(--border); border-radius:14px; overflow:hidden;
+    background:var(--card); border:1px solid var(--border); border-radius:18px; overflow:hidden;
     text-decoration:none; color:var(--text); display:flex; flex-direction:column;
-    transition:transform .2s ease, border-color .2s ease;
+    transition:transform .3s ease, border-color .3s ease, box-shadow .3s ease;
   }
-  .proj-card:hover{ transform:translateY(-4px); border-color:var(--border-strong); }
+  .proj-card:hover{ transform:translateY(-6px); border-color:var(--border-strong); box-shadow:0 24px 48px -20px rgba(0,0,0,0.5); }
   .proj-thumb{ aspect-ratio:16/10; overflow:hidden; background:var(--bg-alt); position:relative; }
-  .proj-thumb img{ width:100%; height:100%; object-fit:cover; transition:transform .4s ease; }
-  .proj-card:hover .proj-thumb img{ transform:scale(1.05); }
-  .proj-body{ padding:18px 20px 20px; flex:1; display:flex; flex-direction:column; }
-  .proj-body h3{ font-size:16.5px; font-weight:600; margin-bottom:8px; }
-  .proj-body p{ color:var(--text-muted); font-size:13.5px; line-height:1.55; flex:1; }
-  .proj-tags{ display:flex; gap:6px; flex-wrap:wrap; margin-top:14px; }
-  .proj-tags span{ font-family:var(--font-mono); font-size:10.5px; color:var(--accent); background:var(--accent-soft); padding:4px 9px; border-radius:6px; }
-  .proj-link{ margin-top:14px; font-family:var(--font-mono); font-size:12.5px; color:var(--text); display:flex; align-items:center; gap:6px; }
+  .proj-thumb img, .proj-thumb video{ width:100%; height:100%; object-fit:cover; transition:transform .5s ease; display:block; }
+  .proj-card:hover .proj-thumb img, .proj-card:hover .proj-thumb video{ transform:scale(1.04); }
+  .proj-body{ padding:26px 28px 28px; flex:1; display:flex; flex-direction:column; }
+  .proj-body h3{ font-size:20px; font-weight:600; margin-bottom:10px; }
+  .proj-body p{ color:var(--text-muted); font-size:14.5px; line-height:1.6; flex:1; }
+  .proj-tags{ display:flex; gap:7px; flex-wrap:wrap; margin-top:16px; }
+  .proj-tags span{ font-family:var(--font-mono); font-size:11px; color:var(--accent); background:var(--accent-soft); padding:5px 10px; border-radius:6px; }
+  .proj-link{ margin-top:16px; font-family:var(--font-mono); font-size:13px; color:var(--text); display:flex; align-items:center; gap:6px; }
   .proj-card:hover .proj-link{ color:var(--accent); }
 
   .process{ padding:80px 0; border-top:1px solid var(--border); position:relative; z-index:1; }
@@ -322,7 +321,7 @@
       </a>
 
       <a class="proj-card reveal" href="https://xisdogaucho.netlify.app/" target="_blank" rel="noopener noreferrer">
-        <div class="proj-thumb"><img src="https://andersonfrota.netlify.app/assets/Xis%20Ga%C3%BAcho.png" alt="Site Xis Gaúcho" loading="lazy"></div>
+        <div class="proj-thumb"><img src="https://andersonfrota.netlify.app/assets/Xis Gaucho.png" alt="Site Xis Gaúcho" loading="lazy"></div>
         <div class="proj-body">
           <h3>Xis Gaúcho</h3>
           <p>Site de lanchonete em Tondela (Portugal), com cardápio digital, carrinho de pedidos e checkout com WhatsApp e pagamento.</p>
@@ -332,7 +331,7 @@
       </a>
 
       <a class="proj-card reveal" href="https://xisdogauchoapp.netlify.app/" target="_blank" rel="noopener noreferrer">
-        <div class="proj-thumb"><img src="https://andersonfrota.netlify.app/assets/Xis%20Ga%C3%BAcho%20POS.png" alt="Sistema Xis Gaúcho POS" loading="lazy"></div>
+        <div class="proj-thumb"><img src="https://andersonfrota.netlify.app/assets/Xis Gaucho POS.png" alt="Sistema Xis Gaúcho POS" loading="lazy"></div>
         <div class="proj-body">
           <h3>Xis Gaúcho POS</h3>
           <p>Sistema de gestão de vendas para eventos, com telas de pedidos, cozinha, caixa, catálogo e relatórios.</p>
@@ -367,6 +366,16 @@
           <h3>Guilherme Costa Fotografia</h3>
           <p>Site de fotógrafo com apresentação de serviços, portfólio e galeria de imagens.</p>
           <div class="proj-tags"><span>HTML</span><span>CSS</span><span>JS</span></div>
+          <div class="proj-link">Ver projeto →</div>
+        </div>
+      </a>
+
+      <a class="proj-card reveal" href="https://pedroadvocacia.netlify.app/" target="_blank" rel="noopener noreferrer">
+        <div class="proj-thumb"><img src="https://andersonfrota.netlify.app/assets/Pedro%20Advocacia.png" alt="Landing page Pedro Advocacia" loading="lazy"></div>
+        <div class="proj-body">
+          <h3>Pedro Advocacia</h3>
+          <p>Landing page de alta conversão para advocacia especializada em imigração, com copywriting focado em dor e transformação do público, seção de prova social e CTA direto para WhatsApp.</p>
+          <div class="proj-tags"><span>HTML</span><span>CSS</span><span>JS</span><span>Copywriting/CRO</span><span>Projeto conceitual</span></div>
           <div class="proj-link">Ver projeto →</div>
         </div>
       </a>
