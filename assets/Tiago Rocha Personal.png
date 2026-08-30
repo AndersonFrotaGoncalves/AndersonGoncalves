@@ -1,0 +1,660 @@
+<!DOCTYPE html>
+<html lang="pt-PT">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Tiago Rocha — Treino Personalizado</title>
+<meta name="description" content="Treino individual, adaptado ao seu corpo e à sua rotina. Avaliação inicial gratuita e acompanhamento próximo para você não desistir no meio do caminho.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg: #0D0D0F;
+    --bg-soft: #111113;
+    --surface: #17171A;
+    --surface-2: #1E1E22;
+    --line: rgba(255,255,255,.08);
+    --line-strong: rgba(255,255,255,.15);
+    --text: #F4F4F3;
+    --muted: #9C9C9F;
+    --muted-2: #6D6D70;
+    --red: #E63946;
+    --red-light: #FF5C67;
+    --lime: #C6F135;
+    --radius: 16px;
+    --display: 'Barlow Condensed', 'Inter', sans-serif;
+    --sans: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  }
+  *{box-sizing:border-box; margin:0; padding:0;}
+  html{scroll-behavior:smooth;}
+  body{
+    background:var(--bg);
+    color:var(--text);
+    font-family:var(--sans);
+    line-height:1.6;
+    -webkit-font-smoothing:antialiased;
+    overflow-x:hidden;
+  }
+  img{max-width:100%; display:block;}
+  a{color:inherit; text-decoration:none;}
+  .wrap{max-width:1120px; margin:0 auto; padding:0 24px;}
+  section{position:relative; padding:120px 0;}
+  @media (max-width:768px){ section{padding:80px 0;} }
+
+  .eyebrow{
+    font-family:var(--sans); font-size:12.5px; font-weight:700;
+    letter-spacing:.14em; text-transform:uppercase; color:var(--red-light);
+    display:inline-flex; align-items:center; gap:10px;
+    margin-bottom:22px;
+  }
+  .eyebrow::before{ content:''; width:24px; height:2px; background:var(--red-light); }
+  h1, h2, h3{ font-family:var(--display); font-weight:800; letter-spacing:-.01em; text-transform:uppercase; }
+  h2{ font-size:clamp(32px, 4vw, 46px); line-height:1.1; margin-bottom:20px; }
+  .lede{ font-size:17.5px; color:var(--muted); max-width:56ch; font-family:var(--sans); text-transform:none; }
+
+  .btn{
+    display:inline-flex; align-items:center; gap:10px;
+    padding:16px 32px; border-radius:8px;
+    font-family:var(--display); font-weight:700; font-size:17px; text-transform:uppercase; letter-spacing:.02em;
+    cursor:pointer; transition:transform .25s ease, box-shadow .25s ease;
+    border:1px solid transparent;
+  }
+  .btn-primary{
+    background:linear-gradient(135deg, var(--red-light), var(--red));
+    color:#0D0D0F;
+    box-shadow:0 8px 30px -8px rgba(230,57,70,.55);
+  }
+  .btn-primary:hover{ transform:translateY(-2px); box-shadow:0 14px 36px -10px rgba(230,57,70,.65); }
+  .btn-ghost{ background:transparent; border-color:var(--line-strong); color:var(--text); }
+  .btn-ghost:hover{ border-color:var(--lime); color:var(--lime); }
+
+  .reveal{ opacity:0; transform:translateY(24px); transition:opacity .8s ease, transform .8s ease; }
+  .reveal.in{ opacity:1; transform:none; }
+  @media (prefers-reduced-motion: reduce){
+    .reveal{ opacity:1; transform:none; transition:none; }
+    html{scroll-behavior:auto;}
+  }
+
+  /* ============ NAV ============ */
+  header{
+    position:fixed; top:0; left:0; right:0; z-index:80;
+    backdrop-filter:blur(14px);
+    background:rgba(13,13,15,.75);
+    border-bottom:1px solid var(--line);
+  }
+  nav.wrap{ display:flex; align-items:center; justify-content:space-between; height:76px; }
+  .logo{ font-family:var(--display); font-size:22px; font-weight:800; text-transform:uppercase; letter-spacing:.01em; }
+  .logo span{ color:var(--red-light); }
+  .nav-links{ display:flex; gap:34px; font-size:14px; color:var(--muted); }
+  .nav-links a:hover{ color:var(--text); }
+  @media (max-width:760px){ .nav-links{display:none;} }
+
+  /* ============ 01 HERO ============ */
+  .hero{
+    padding-top:190px; padding-bottom:110px; position:relative;
+    background:
+      radial-gradient(600px 420px at 85% 4%, rgba(230,57,70,.18), transparent 70%),
+      radial-gradient(480px 360px at 4% 92%, rgba(198,241,53,.07), transparent 70%);
+  }
+  .hero-grid{ display:grid; grid-template-columns:1.05fr .85fr; gap:64px; align-items:center; }
+  @media (max-width:900px){ .hero-grid{grid-template-columns:1fr;} }
+  .hero h1{ font-size:clamp(42px, 5.6vw, 68px); line-height:1.02; margin-bottom:24px; }
+  .hero h1 em{ font-style:normal; color:var(--red-light); }
+  .hero .lede{ margin-bottom:36px; }
+  .hero-cta-row{ display:flex; gap:16px; flex-wrap:wrap; align-items:center; }
+  .hero-note{ margin-top:22px; font-size:13px; color:var(--muted-2); display:flex; align-items:center; gap:8px; }
+  .hero-note .dot{ width:6px; height:6px; border-radius:50%; background:var(--lime); }
+
+  .hero-visual{
+    position:relative; border-radius:20px; border:1px solid var(--line-strong);
+    background:linear-gradient(165deg, var(--surface), var(--surface-2));
+    padding:30px; box-shadow:0 40px 80px -30px rgba(0,0,0,.55);
+  }
+  .stat-row{ display:flex; justify-content:space-between; margin-bottom:22px; }
+  .stat-row .label{ font-family:var(--sans); font-size:12px; color:var(--muted-2); text-transform:uppercase; letter-spacing:.06em; }
+  .progress-track{ height:10px; border-radius:6px; background:var(--bg); overflow:hidden; margin-bottom:6px; }
+  .progress-fill{ height:100%; border-radius:6px; background:linear-gradient(90deg, var(--red), var(--red-light)); }
+  .week-row{ display:flex; gap:8px; margin:22px 0; }
+  .week-day{
+    flex:1; aspect-ratio:1; border-radius:8px;
+    display:flex; align-items:center; justify-content:center;
+    font-family:var(--display); font-size:14px; font-weight:700;
+    background:var(--bg); border:1px solid var(--line); color:var(--muted-2);
+  }
+  .week-day.done{ background:rgba(230,57,70,.15); border-color:var(--red); color:var(--red-light); }
+  .week-day.today{ background:rgba(198,241,53,.15); border-color:var(--lime); color:var(--lime); }
+  .hero-stats{ display:flex; gap:28px; margin-top:8px; }
+  .hero-stat b{ display:block; font-family:var(--display); font-size:26px; color:var(--red-light); }
+  .hero-stat span{ font-size:11.5px; color:var(--muted-2); text-transform:uppercase; letter-spacing:.04em; }
+
+  /* ============ 02 PROBLEMA ============ */
+  .problema{ background:var(--bg-soft); border-top:1px solid var(--line); border-bottom:1px solid var(--line); }
+  .problema-head{ max-width:640px; margin-bottom:56px; }
+  .problem-list{ display:grid; grid-template-columns:repeat(2, 1fr); gap:18px; }
+  @media (max-width:760px){ .problem-list{grid-template-columns:1fr;} }
+  .problem-item{
+    display:flex; gap:16px; padding:26px; border-radius:var(--radius);
+    background:var(--surface); border:1px solid var(--line);
+  }
+  .problem-item .mark{
+    flex-shrink:0; width:34px; height:34px; border-radius:50%;
+    border:1px solid var(--lime); color:var(--lime);
+    display:flex; align-items:center; justify-content:center;
+    font-family:var(--display); font-size:16px; font-weight:700;
+  }
+  .problem-item p{ font-size:15.5px; color:var(--muted); }
+  .problem-item strong{ color:var(--text); }
+
+  /* ============ 03 SOLUÇÃO ============ */
+  .solucao .wrap{ display:grid; grid-template-columns:.9fr 1.1fr; gap:70px; align-items:center; }
+  @media (max-width:900px){ .solucao .wrap{grid-template-columns:1fr;} }
+  .solucao-copy p{ color:var(--muted); font-size:16.5px; margin-bottom:18px; }
+  .solucao-copy p:last-child{ margin-bottom:0; }
+  .solucao-copy strong{ color:var(--red-light); font-weight:700; }
+  .solucao-panel{
+    border-radius:20px; border:1px solid var(--line-strong);
+    background:linear-gradient(150deg, var(--surface), var(--surface-2));
+    padding:38px;
+  }
+  .solucao-panel .step-mini{ display:flex; gap:14px; padding:16px 0; border-bottom:1px solid var(--line); }
+  .solucao-panel .step-mini:last-child{ border-bottom:none; }
+  .step-num-mini{ font-family:var(--display); font-size:20px; font-weight:800; color:var(--red-light); width:32px; flex-shrink:0; }
+  .step-mini h4{ font-family:var(--sans); font-size:15px; font-weight:700; margin-bottom:4px; text-transform:none; }
+  .step-mini p{ font-size:13.5px; color:var(--muted-2); }
+
+  /* ============ 04 BENEFÍCIOS ============ */
+  .beneficios-grid{ display:grid; grid-template-columns:repeat(3, 1fr); gap:22px; margin-top:56px; }
+  @media (max-width:900px){ .beneficios-grid{grid-template-columns:repeat(2, 1fr);} }
+  @media (max-width:600px){ .beneficios-grid{grid-template-columns:1fr;} }
+  .beneficio-card{
+    padding:30px 26px; border-radius:var(--radius);
+    background:rgba(255,255,255,.02); border:1px solid var(--line);
+    transition:border-color .3s ease, transform .3s ease, background .3s ease;
+  }
+  .beneficio-card:hover{ border-color:rgba(230,57,70,.45); transform:translateY(-4px); background:rgba(255,255,255,.035); }
+  .beneficio-icon{
+    width:44px; height:44px; border-radius:12px;
+    background:linear-gradient(140deg, rgba(230,57,70,.22), rgba(230,57,70,.05));
+    border:1px solid rgba(230,57,70,.4);
+    display:flex; align-items:center; justify-content:center;
+    font-size:18px; margin-bottom:18px; color:var(--red-light);
+  }
+  .beneficio-card h3{ font-family:var(--sans); font-size:16.5px; font-weight:700; margin-bottom:8px; text-transform:none; }
+  .beneficio-card p{ font-size:14.5px; color:var(--muted); }
+
+  /* ============ 05 COMO FUNCIONA ============ */
+  .como-funciona{ background:var(--bg-soft); border-top:1px solid var(--line); border-bottom:1px solid var(--line); }
+  .timeline{ display:grid; grid-template-columns:repeat(3, 1fr); gap:0; margin-top:60px; position:relative; }
+  @media (max-width:800px){ .timeline{grid-template-columns:1fr; gap:36px;} }
+  .timeline::before{
+    content:''; position:absolute; top:26px; left:8%; right:8%; height:1px;
+    background:linear-gradient(90deg, transparent, var(--line-strong) 15%, var(--line-strong) 85%, transparent);
+  }
+  @media (max-width:800px){ .timeline::before{ display:none; } }
+  .tl-step{ text-align:center; padding:0 20px; position:relative; }
+  .tl-num{
+    width:54px; height:54px; border-radius:50%;
+    background:var(--bg); border:1px solid var(--red);
+    color:var(--red-light);
+    display:flex; align-items:center; justify-content:center;
+    font-family:var(--display); font-size:22px; font-weight:800;
+    margin:0 auto 22px; position:relative; z-index:2;
+  }
+  .tl-step h3{ font-family:var(--sans); font-size:16px; font-weight:700; margin-bottom:10px; text-transform:none; }
+  .tl-step p{ font-size:14px; color:var(--muted); max-width:26ch; margin:0 auto; }
+
+  /* ============ 06 DEPOIMENTOS ============ */
+  .depoimentos-label{ font-size:12.5px; color:var(--muted-2); text-align:center; margin-bottom:8px; font-family:var(--sans); text-transform:none; }
+  .depoimentos-grid{ display:grid; grid-template-columns:repeat(3, 1fr); gap:22px; margin-top:44px; }
+  @media (max-width:900px){ .depoimentos-grid{grid-template-columns:1fr;} }
+  .depoimento-card{
+    padding:32px 28px; border-radius:var(--radius);
+    background:var(--surface); border:1px solid var(--line);
+    display:flex; flex-direction:column; gap:18px;
+  }
+  .stars{ color:var(--lime); font-size:15px; letter-spacing:2px; }
+  .depoimento-card p{ font-size:15px; color:var(--text); font-style:italic; line-height:1.65; font-family:var(--sans); text-transform:none; }
+  .depo-author{ display:flex; align-items:center; gap:12px; margin-top:auto; }
+  .depo-avatar{
+    width:38px; height:38px; border-radius:50%;
+    background:linear-gradient(140deg, var(--red), var(--lime));
+    display:flex; align-items:center; justify-content:center;
+    font-family:var(--display); font-weight:800; color:#0D0D0F; font-size:15px;
+  }
+  .depo-author strong{ font-size:13.5px; font-weight:700; display:block; font-family:var(--sans); text-transform:none; }
+  .depo-author span{ font-size:12px; color:var(--muted-2); }
+
+  /* ============ 07 OFERTA ============ */
+  .oferta-panel{
+    max-width:820px; margin:56px auto 0;
+    border-radius:22px; border:1px solid rgba(230,57,70,.4);
+    background:linear-gradient(160deg, rgba(230,57,70,.09), rgba(255,255,255,.015));
+    padding:50px;
+  }
+  @media (max-width:600px){ .oferta-panel{ padding:32px 24px; } }
+  .oferta-top{ display:flex; justify-content:space-between; align-items:flex-start; gap:24px; margin-bottom:30px; flex-wrap:wrap; }
+  .oferta-price{ text-align:right; }
+  .oferta-price b{ font-family:var(--display); font-size:26px; color:var(--red-light); display:block; }
+  .oferta-price span{ font-size:12.5px; color:var(--muted-2); font-family:var(--sans); }
+  .oferta-checklist{ list-style:none; display:grid; gap:14px; margin-bottom:32px; }
+  .oferta-checklist li{ display:flex; gap:12px; font-size:15px; color:var(--text); font-family:var(--sans); }
+  .oferta-checklist li::before{ content:'✓'; color:var(--lime); font-weight:700; flex-shrink:0; }
+  .trust-box{ border-top:1px solid var(--line); padding-top:26px; display:flex; gap:14px; align-items:flex-start; }
+  .trust-box .mark{ color:var(--lime); font-size:18px; flex-shrink:0; }
+  .trust-box p{ font-size:14px; color:var(--muted); font-family:var(--sans); }
+
+  /* ============ 08 FAQ ============ */
+  .faq-list{ max-width:760px; margin:52px auto 0; display:grid; gap:2px; }
+  .faq-item{ border:1px solid var(--line); border-radius:14px; overflow:hidden; background:var(--surface); }
+  .faq-q{ display:flex; justify-content:space-between; align-items:center; padding:22px 26px; cursor:pointer; font-weight:600; font-size:15.5px; user-select:none; font-family:var(--sans); text-transform:none; }
+  .faq-q .plus{ color:var(--red-light); font-size:20px; transition:transform .3s ease; flex-shrink:0; margin-left:16px; }
+  .faq-item.open .plus{ transform:rotate(45deg); }
+  .faq-a{ max-height:0; overflow:hidden; transition:max-height .35s ease; padding:0 26px; }
+  .faq-a p{ font-size:14.5px; color:var(--muted); padding-bottom:22px; }
+  .faq-item.open .faq-a{ max-height:220px; }
+
+  /* ============ 09 CTA FINAL ============ */
+  .cta-final{
+    text-align:center;
+    background: radial-gradient(700px 400px at 50% 0%, rgba(230,57,70,.16), transparent 70%);
+    border-top:1px solid var(--line);
+  }
+  .cta-final h2{ max-width:18ch; margin:0 auto 18px; }
+  .cta-final .lede{ margin:0 auto 40px; }
+
+  /* ============ FOOTER ============ */
+  footer{ border-top:1px solid var(--line); padding:56px 0 40px; }
+  .footer-grid{ display:flex; justify-content:space-between; align-items:flex-start; gap:24px; flex-wrap:wrap; }
+  .footer-brand .logo{ margin-bottom:10px; }
+  .footer-brand p{ font-size:13.5px; color:var(--muted-2); max-width:32ch; font-family:var(--sans); }
+  .footer-contact{ text-align:right; font-size:13.5px; color:var(--muted); font-family:var(--sans); }
+  @media (max-width:600px){ .footer-contact{ text-align:left; } }
+  .footer-contact a{ color:var(--red-light); }
+  .footer-bottom{
+    margin-top:40px; padding-top:24px; border-top:1px solid var(--line);
+    font-size:12px; color:var(--muted-2); display:flex; justify-content:space-between; flex-wrap:wrap; gap:10px;
+    font-family:var(--sans);
+  }
+
+  /* ============ WHATSAPP FLUTUANTE ============ */
+  .wa-float{
+    position:fixed; right:22px; bottom:calc(22px + env(safe-area-inset-bottom, 0px));
+    z-index:90; display:flex; align-items:center; gap:10px;
+  }
+  .wa-tooltip{
+    background:var(--surface); border:1px solid var(--line-strong);
+    color:var(--text); font-size:13px; padding:9px 14px; border-radius:10px;
+    white-space:nowrap; opacity:0; transform:translateX(6px);
+    transition:opacity .25s ease, transform .25s ease; pointer-events:none;
+    font-family:var(--sans);
+  }
+  .wa-float:hover .wa-tooltip{ opacity:1; transform:none; }
+  .wa-btn{
+    width:58px; height:58px; border-radius:50%;
+    background:linear-gradient(145deg, #2FD86B, #1FAE55);
+    display:flex; align-items:center; justify-content:center;
+    box-shadow:0 12px 28px -8px rgba(31,174,85,.55);
+    transition:transform .25s ease;
+  }
+  .wa-btn:hover{ transform:scale(1.06); }
+  .wa-btn svg{ width:28px; height:28px; }
+</style>
+</head>
+<body>
+
+<header>
+  <nav class="wrap">
+    <div class="logo">Tiago <span>Rocha</span></div>
+    <div class="nav-links">
+      <a href="#solucao">O método</a>
+      <a href="#beneficios">Benefícios</a>
+      <a href="#depoimentos">Resultados</a>
+      <a href="#faq">Perguntas</a>
+    </div>
+    <a class="btn btn-ghost" style="padding:11px 22px; font-size:14px;" href="https://wa.me/351916774320?text=Ol%C3%A1%2C%20vim%20pelo%20site%20e%20quero%20agendar%20uma%20avalia%C3%A7%C3%A3o%20gratuita." target="_blank" rel="noopener">Falar agora</a>
+  </nav>
+</header>
+
+<!-- 01 HERO -->
+<section class="hero">
+  <div class="wrap hero-grid">
+    <div class="reveal in">
+      <div class="eyebrow">Treino personalizado · Algarve</div>
+      <h1>Chega de começar em <em>setembro</em> e desistir em <em>outubro.</em></h1>
+      <p class="lede">Para quem já tentou treinar sozinho, sentiu que a academia é grande demais e intimidante, ou parou por medo de se lesionar. Aqui o treino é feito pra você continuar — não só pra você começar.</p>
+      <div class="hero-cta-row">
+        <a class="btn btn-primary" href="https://wa.me/351916774320?text=Ol%C3%A1%2C%20vim%20pelo%20site%20e%20quero%20agendar%20uma%20avalia%C3%A7%C3%A3o%20gratuita." target="_blank" rel="noopener">Quero saber como funciona</a>
+        <a class="btn btn-ghost" href="#como-funciona">Ver como funciona</a>
+      </div>
+      <div class="hero-note"><span class="dot"></span> Avaliação inicial sem custo</div>
+    </div>
+
+    <div class="hero-visual reveal in">
+      <div class="stat-row">
+        <span class="label">Progresso da semana</span>
+        <span class="label" style="color:var(--red-light);">4/5 treinos</span>
+      </div>
+      <div class="progress-track"><div class="progress-fill" style="width:80%;"></div></div>
+      <div class="week-row">
+        <div class="week-day done">S</div>
+        <div class="week-day done">T</div>
+        <div class="week-day done">Q</div>
+        <div class="week-day done">Q</div>
+        <div class="week-day today">S</div>
+        <div class="week-day">S</div>
+        <div class="week-day">D</div>
+      </div>
+      <div class="hero-stats">
+        <div class="hero-stat"><b>100%</b><span>Treino individual</span></div>
+        <div class="hero-stat"><b>0€</b><span>Avaliação inicial</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 02 PROBLEMA -->
+<section class="problema">
+  <div class="wrap">
+    <div class="problema-head reveal">
+      <div class="eyebrow">Isto soa familiar?</div>
+      <h2>Não é falta de força de vontade.</h2>
+    </div>
+    <div class="problem-list">
+      <div class="problem-item reveal">
+        <div class="mark">1</div>
+        <p><strong>Já tentou treinar sozinho</strong> e desistiu depois de algumas semanas, sem saber se estava a fazer certo.</p>
+      </div>
+      <div class="problem-item reveal">
+        <div class="mark">2</div>
+        <p><strong>Sente-se intimidado</strong> num ginásio grande, cheio de gente que parece já saber tudo o que está a fazer.</p>
+      </div>
+      <div class="problem-item reveal">
+        <div class="mark">3</div>
+        <p><strong>Tem medo de se lesionar</strong> ou de fazer um exercício errado, principalmente se já teve alguma dor ou lesão antes.</p>
+      </div>
+      <div class="problem-item reveal">
+        <div class="mark">4</div>
+        <p><strong>Já pagou por um plano de treino</strong> genérico que nunca foi ajustado à sua rotina real.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 03 SOLUÇÃO -->
+<section class="solucao" id="solucao">
+  <div class="wrap">
+    <div class="solucao-copy reveal">
+      <div class="eyebrow">O método</div>
+      <h2>O treino se adapta a você — não o contrário.</h2>
+      <p>Antes de qualquer treino, há uma <strong>avaliação física completa</strong>: histórico, limitações, objetivo real — não um plano genérico copiado de outro aluno.</p>
+      <p>O acompanhamento é <strong>100% individual</strong>, com ajustes constantes conforme a sua evolução — nunca a mesma ficha de treino por meses seguidos.</p>
+      <p>O foco não é o treino mais difícil possível. É o treino que você consegue manter — e que, por isso, funciona.</p>
+    </div>
+    <div class="solucao-panel reveal">
+      <div class="step-mini">
+        <div class="step-num-mini">→</div>
+        <div>
+          <h4>Avaliação física completa</h4>
+          <p>Histórico, limitações e objetivo real, sem achismos.</p>
+        </div>
+      </div>
+      <div class="step-mini">
+        <div class="step-num-mini">→</div>
+        <div>
+          <h4>Plano de treino individual</h4>
+          <p>Ajustado à sua rotina, não copiado de outro aluno.</p>
+        </div>
+      </div>
+      <div class="step-mini">
+        <div class="step-num-mini">→</div>
+        <div>
+          <h4>Acompanhamento contínuo</h4>
+          <p>Ajustes constantes conforme a sua evolução real.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 04 BENEFÍCIOS -->
+<section id="beneficios">
+  <div class="wrap">
+    <div class="reveal" style="max-width:640px;">
+      <div class="eyebrow">O que muda na prática</div>
+      <h2>Não vendemos treino difícil. Vendemos consistência.</h2>
+    </div>
+    <div class="beneficios-grid">
+      <div class="beneficio-card reveal">
+        <div class="beneficio-icon">◆</div>
+        <h3>Treino 100% individual</h3>
+        <p>Sem turmas, sem dividir atenção — o foco é só no seu progresso.</p>
+      </div>
+      <div class="beneficio-card reveal">
+        <div class="beneficio-icon">◆</div>
+        <h3>Avaliação física completa</h3>
+        <p>Histórico e limitações mapeados antes do primeiro treino.</p>
+      </div>
+      <div class="beneficio-card reveal">
+        <div class="beneficio-icon">◆</div>
+        <h3>Acompanhamento de evolução</h3>
+        <p>Métricas e ajustes ao longo do tempo — não a mesma ficha por meses.</p>
+      </div>
+      <div class="beneficio-card reveal">
+        <div class="beneficio-icon">◆</div>
+        <h3>Horários flexíveis</h3>
+        <p>Treino encaixado na sua rotina real, não o contrário.</p>
+      </div>
+      <div class="beneficio-card reveal">
+        <div class="beneficio-icon">◆</div>
+        <h3>Ambiente sem intimidação</h3>
+        <p>Sem julgamento, sem comparação — o ritmo é o seu.</p>
+      </div>
+      <div class="beneficio-card reveal">
+        <div class="beneficio-icon">◆</div>
+        <h3>Avaliação inicial gratuita</h3>
+        <p>Entenda o que é possível antes de decidir começar.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 05 COMO FUNCIONA -->
+<section class="como-funciona" id="como-funciona">
+  <div class="wrap">
+    <div class="reveal" style="text-align:center;">
+      <div class="eyebrow" style="justify-content:center;">Do primeiro contacto ao resultado</div>
+      <h2>Três passos, sem enrolação.</h2>
+    </div>
+    <div class="timeline">
+      <div class="tl-step reveal">
+        <div class="tl-num">1</div>
+        <h3>Avaliação inicial</h3>
+        <p>Conversa sobre o seu histórico, objetivo e rotina real.</p>
+      </div>
+      <div class="tl-step reveal">
+        <div class="tl-num">2</div>
+        <h3>Plano personalizado</h3>
+        <p>Treino desenhado para o seu corpo e para a sua disponibilidade.</p>
+      </div>
+      <div class="tl-step reveal">
+        <div class="tl-num">3</div>
+        <h3>Acompanhamento contínuo</h3>
+        <p>Ajustes constantes conforme a sua evolução real.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 06 DEPOIMENTOS -->
+<section id="depoimentos">
+  <div class="wrap">
+    <div class="reveal" style="text-align:center;">
+      <div class="eyebrow" style="justify-content:center;">Resultados</div>
+      <h2>O que muda com acompanhamento de perto</h2>
+      <p class="depoimentos-label">Depoimentos demonstrativos, usados apenas para ilustrar a experiência do acompanhamento.</p>
+    </div>
+    <div class="depoimentos-grid">
+      <div class="depoimento-card reveal">
+        <div class="stars">★★★★★</div>
+        <p>"Já tinha desistido umas três vezes antes. Dessa vez não desisti porque o treino se encaixava na minha rotina, não o contrário."</p>
+        <div class="depo-author">
+          <div class="depo-avatar">P</div>
+          <div><strong>Paulo S.</strong><span>Depoimento demonstrativo</span></div>
+        </div>
+      </div>
+      <div class="depoimento-card reveal">
+        <div class="stars">★★★★★</div>
+        <p>"Tinha muito medo de me lesionar de novo. A avaliação inicial me deu segurança pra treinar sem ficar com receio o tempo todo."</p>
+        <div class="depo-author">
+          <div class="depo-avatar">M</div>
+          <div><strong>Mafalda T.</strong><span>Depoimento demonstrativo</span></div>
+        </div>
+      </div>
+      <div class="depoimento-card reveal">
+        <div class="stars">★★★★★</div>
+        <p>"Nunca tinha treinado sem me sentir julgado. O acompanhamento individual mudou completamente minha relação com o treino."</p>
+        <div class="depo-author">
+          <div class="depo-avatar">R</div>
+          <div><strong>Rui F.</strong><span>Depoimento demonstrativo</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 07 OFERTA -->
+<section>
+  <div class="wrap">
+    <div class="reveal" style="text-align:center;">
+      <div class="eyebrow" style="justify-content:center;">O que está incluído</div>
+      <h2>A avaliação inicial é sempre gratuita.</h2>
+    </div>
+
+    <div class="oferta-panel reveal">
+      <div class="oferta-top">
+        <div>
+          <div class="eyebrow" style="margin-bottom:8px;">Avaliação física</div>
+          <p style="color:var(--muted); font-size:14.5px; max-width:36ch; font-family:var(--sans);">O primeiro passo antes de qualquer plano de treino.</p>
+        </div>
+        <div class="oferta-price">
+          <b>Gratuita</b>
+          <span>Planos de acompanhamento sob consulta</span>
+        </div>
+      </div>
+
+      <ul class="oferta-checklist">
+        <li>Avaliação física e de histórico completa</li>
+        <li>Plano de treino 100% individual</li>
+        <li>Acompanhamento contínuo com ajustes de evolução</li>
+        <li>Flexibilidade de horários conforme sua rotina</li>
+      </ul>
+
+      <div class="trust-box">
+        <div class="mark">✦</div>
+        <p>Sem letras miúdas: você decide depois de entender o plano completo — sem pressão pra fechar um pacote longo na primeira conversa.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 08 FAQ -->
+<section id="faq">
+  <div class="wrap">
+    <div class="reveal" style="text-align:center;">
+      <div class="eyebrow" style="justify-content:center;">Perguntas frequentes</div>
+      <h2>Antes de marcar, tire as suas dúvidas</h2>
+    </div>
+
+    <div class="faq-list">
+      <div class="faq-item reveal">
+        <div class="faq-q">Nunca treinei antes. Consigo começar mesmo assim? <span class="plus">+</span></div>
+        <div class="faq-a"><p>Sim. A avaliação inicial existe justamente para adaptar o treino ao seu ponto de partida — não é preciso ter experiência nenhuma.</p></div>
+      </div>
+      <div class="faq-item reveal">
+        <div class="faq-q">Já tive uma lesão. Isso é um problema? <span class="plus">+</span></div>
+        <div class="faq-a"><p>Não — pelo contrário, é essencial informar isso na avaliação inicial, para o plano ser desenhado respeitando essa limitação desde o início.</p></div>
+      </div>
+      <div class="faq-item reveal">
+        <div class="faq-q">Com que frequência preciso treinar? <span class="plus">+</span></div>
+        <div class="faq-a"><p>Depende do seu objetivo e da sua disponibilidade real — isso é definido juntos na avaliação, não imposto de forma genérica.</p></div>
+      </div>
+      <div class="faq-item reveal">
+        <div class="faq-q">Onde acontecem os treinos? <span class="plus">+</span></div>
+        <div class="faq-a"><p>Isso é combinado na avaliação inicial, conforme a estrutura disponível e a sua preferência de local.</p></div>
+      </div>
+      <div class="faq-item reveal">
+        <div class="faq-q">Quanto custa o acompanhamento? <span class="plus">+</span></div>
+        <div class="faq-a"><p>A avaliação inicial é gratuita. O valor do acompanhamento é apresentado depois, de acordo com a frequência e o plano combinados.</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 09 CTA FINAL -->
+<section class="cta-final">
+  <div class="wrap">
+    <div class="reveal">
+      <div class="eyebrow" style="justify-content:center;">Pronto pra não desistir dessa vez?</div>
+      <h2>O primeiro passo é só uma conversa.</h2>
+      <p class="lede" style="margin-left:auto; margin-right:auto; text-align:center;">Marque a sua avaliação gratuita e entenda como o treino pode se encaixar na sua rotina, de verdade.</p>
+      <div style="display:flex; justify-content:center;">
+        <a class="btn btn-primary" href="https://wa.me/351916774320?text=Ol%C3%A1%2C%20vim%20pelo%20site%20e%20quero%20agendar%20uma%20avalia%C3%A7%C3%A3o%20gratuita." target="_blank" rel="noopener">Falar no WhatsApp</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <div class="logo">Tiago <span>Rocha</span></div>
+        <p>Treino personalizado no Algarve — acompanhamento individual do início ao resultado.</p>
+      </div>
+      <div class="footer-contact">
+        <div>Algarve, Portugal</div>
+        <div><a href="https://wa.me/351916774320" target="_blank" rel="noopener">+351 916 774 320</a></div>
+        <div>contacto@tiagorochapt.pt</div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>© 2026 Tiago Rocha — Treino Personalizado</span>
+      <span>Avaliação inicial gratuita</span>
+    </div>
+  </div>
+</footer>
+
+<!-- WhatsApp flutuante -->
+<div class="wa-float">
+  <div class="wa-tooltip">Fale connosco no WhatsApp</div>
+  <a class="wa-btn" href="https://wa.me/351916774320?text=Ol%C3%A1%2C%20vim%20pelo%20site%20e%20quero%20agendar%20uma%20avalia%C3%A7%C3%A3o%20gratuita." target="_blank" rel="noopener" aria-label="Falar no WhatsApp">
+    <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91C2.13 13.66 2.59 15.36 3.45 16.86L2.05 22L7.3 20.62C8.75 21.41 10.38 21.83 12.04 21.83C17.5 21.83 21.95 17.38 21.95 11.92C21.95 9.27 20.92 6.78 19.05 4.91C17.18 3.03 14.69 2 12.04 2ZM12.04 3.67C14.25 3.67 16.32 4.53 17.87 6.09C19.42 7.65 20.28 9.71 20.28 11.92C20.28 16.46 16.58 20.15 12.03 20.15C10.56 20.15 9.12 19.76 7.85 19.03L7.55 18.85L4.43 19.67L5.26 16.63L5.06 16.31C4.26 15 3.8 13.47 3.8 11.91C3.81 7.37 7.5 3.67 12.04 3.67ZM8.53 6.85C8.37 6.85 8.1 6.91 7.87 7.16C7.65 7.41 7 8.01 7 9.22C7 10.43 7.89 11.6 8.01 11.76C8.14 11.92 9.76 14.44 12.29 15.53C14.38 16.43 14.81 16.27 15.27 16.22C15.73 16.18 16.75 15.62 16.96 15.03C17.17 14.44 17.17 13.94 17.11 13.83C17.04 13.72 16.87 13.66 16.62 13.54C16.37 13.41 15.16 12.81 14.93 12.73C14.7 12.65 14.53 12.6 14.37 12.85C14.2 13.1 13.72 13.66 13.58 13.83C13.43 13.99 13.29 14.01 13.04 13.89C12.79 13.76 11.99 13.5 11.05 12.66C10.31 12.01 9.81 11.19 9.67 10.94C9.53 10.69 9.65 10.56 9.78 10.43C9.89 10.31 10.03 10.13 10.16 9.98C10.28 9.83 10.32 9.72 10.41 9.55C10.49 9.38 10.44 9.23 10.38 9.11C10.32 8.98 9.83 7.75 9.62 7.26C9.42 6.79 9.21 6.86 9.06 6.85C8.91 6.85 8.74 6.85 8.53 6.85Z" fill="white"/>
+    </svg>
+  </a>
+</div>
+
+<script>
+  const revealEls = document.querySelectorAll('.reveal');
+  const io = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if(entry.isIntersecting){
+        entry.target.classList.add('in');
+        io.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.15, rootMargin: '0px 0px -60px 0px' });
+  revealEls.forEach(el => io.observe(el));
+
+  document.querySelectorAll('.faq-item').forEach(item => {
+    item.querySelector('.faq-q').addEventListener('click', () => {
+      const isOpen = item.classList.contains('open');
+      document.querySelectorAll('.faq-item.open').forEach(o => { if(o !== item) o.classList.remove('open'); });
+      item.classList.toggle('open', !isOpen);
+    });
+  });
+</script>
+
+</body>
+</html>
